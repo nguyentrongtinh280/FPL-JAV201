@@ -39,7 +39,7 @@ public class UserManager {
         return list;
     }
 
-    public List<User> findByPage(int number, int size) {
+    public List<User> Page(int number, int size) {
         EntityManager em = factory.createEntityManager();
         String jpql ="SELECT u FROM User u ORDER BY u.id";
         TypedQuery<User> query = em.createQuery(jpql, User.class);

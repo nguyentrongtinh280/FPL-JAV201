@@ -10,10 +10,9 @@ public class Main {
         UserManager userManager = new UserManager();
 
         User user = new User();
-        user.setId("U0016");
-        user.setFullname("Nguyen Minh Tam");
-        user.setPassword("963");
-        user.setEmail("Tam16@fpt.edu.vn");
+        user.setFullname("Nguyen Minh Tai");
+        user.setPassword("123");
+        user.setEmail("Tai1@fpt.edu.vn");
         user.setAdmin(false);
 
         //userManager.create(user);
@@ -35,14 +34,14 @@ public class Main {
 
 
         //Bai 4
-        int number = 2;
-        int size = 5;
-        List<User> users = userManager.findByPage(number, size);
-        for (User u : users) {
-            System.out.println("Id: " + u.getId()
-            + " | Fullname: " + u.getFullname()
-            + " | Email: " + u.getEmail());
-        }
+//        int number = 2;
+//        int size = 5;
+//        List<User> users = userManager.Page(number, size);
+//        for (User u : users) {
+//            System.out.println("Id: " + u.getId()
+//            + " | Fullname: " + u.getFullname()
+//            + " | Email: " + u.getEmail());
+//        }
 
 
     }
