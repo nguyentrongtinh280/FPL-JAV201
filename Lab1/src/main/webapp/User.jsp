@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
-<c:url var="url" value="/user/"/>
+<c:url var="url" value="/user"/>
 <div class="container mt-4">
   <div class="card mb-4">
     <div class="card-header fw-bold bg-info">
@@ -18,6 +17,7 @@
 
     <div class="card-body">
       <form action="${url}" method="post" id="userForm" novalidate>
+        <input type="hidden" name="id" value="${user.id}">
 
         <div class="mb-3">
           <label class="form-label">Fullname</label>
@@ -65,7 +65,7 @@
           <button formaction="${url}/create" class="btn btn-success">Create</button>
           <button formaction="${url}/update" class="btn btn-warning">Update</button>
           <button formaction="${url}/delete" class="btn btn-danger">Delete</button>
-          <button type="reset" class="btn btn-secondary">Reset</button>
+          <button href="${url}/reset" class="btn btn-secondary">Reset</button>
         </div>
       </form>
 
