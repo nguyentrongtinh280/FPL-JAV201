@@ -32,6 +32,7 @@ public class UserServlet extends HttpServlet {
            if (id != null) {
                User user = userDAO.getUserById(id);
                req.setAttribute("user", user);
+               req.setAttribute("isEdit", true);
            }
         }
         if (path.endsWith("/reset")) {
@@ -51,7 +52,6 @@ public class UserServlet extends HttpServlet {
         }
         String path = req.getServletPath();
         if (path.endsWith("/create")) {
-            user.setId(null);
             userDAO.createUser(user);
         }
         else if (path.endsWith("/update")) {

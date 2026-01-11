@@ -3,16 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Management</title>
+  <title>Quản lý người dùng</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <body class="bg-light">
 <c:url var="url" value="/user"/>
 <div class="container mt-4">
   <div class="card mb-4">
     <div class="card-header fw-bold bg-primary">
-      User Management
+      Quản lý người dùng
     </div>
 
     <div class="card-body">
@@ -20,7 +21,8 @@
       <form action="${url}" method="post" id="userForm" novalidate>
         <div class="mb-3">
           <label class="form-label fw-bold">Id</label>
-          <input type="text" name="id" class="form-control" value="${user.id}" required>
+          <input type="text" name="id"
+                 class="form-control" value="${user.id}" ${isEdit ? 'readonly' : ''} required>
           <div class="valid-feedback">Hợp lệ</div>
           <div class="invalid-feedback">Vui lòng nhập id!</div>
         </div>
@@ -76,7 +78,7 @@
       </form>
 
       <hr>
-      <h3 class="fw-bold text-primary">Danh sách user</h3>
+      <h3 class="fw-bold text-primary">Danh sách người dùng</h3>
       <table class="table table-hover table-bordered align-middle text-center">
         <thead class="table-primary">
         <tr>
@@ -101,6 +103,7 @@
             </td>
             <td>
               <a href="${url}/edit?id=${u.id}" class="btn btn-sm btn-info">
+                <i class="bi bi-pencil-square me-1"></i>
                 Edit
               </a>
             </td>
