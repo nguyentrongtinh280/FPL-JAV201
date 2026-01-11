@@ -11,16 +11,22 @@
 <c:url var="url" value="/user"/>
 <div class="container mt-4">
   <div class="card mb-4">
-    <div class="card-header fw-bold bg-info">
-      User Infomation
+    <div class="card-header fw-bold bg-primary">
+      User Management
     </div>
 
     <div class="card-body">
+      <h2 class="fw-bold text-primary text-center">Thông tin người dùng</h2>
       <form action="${url}" method="post" id="userForm" novalidate>
-        <input type="hidden" name="id" value="${user.id}">
+        <div class="mb-3">
+          <label class="form-label fw-bold">Id</label>
+          <input type="text" name="id" class="form-control" value="${user.id}" required>
+          <div class="valid-feedback">Hợp lệ</div>
+          <div class="invalid-feedback">Vui lòng nhập id!</div>
+        </div>
 
         <div class="mb-3">
-          <label class="form-label">Fullname</label>
+          <label class="form-label fw-bold">Fullname</label>
           <input type="text" name="fullname"
                  class="form-control" value="${user.fullname}" required>
           <div class="valid-feedback">Hợp lệ</div>
@@ -28,7 +34,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Email</label>
+          <label class="form-label fw-bold">Email</label>
           <input type="email" name="email"
                  class="form-control" value="${user.email}" required>
           <div class="valid-feedback">Hợp lệ</div>
@@ -36,7 +42,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Password</label>
+          <label class="form-label fw-bold">Password</label>
           <input type="password" name="password"
                  class="form-control" value="${user.password}" required>
           <div class="valid-feedback">Hợp lệ</div>
@@ -44,7 +50,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label me-3">Role</label>
+          <label class="form-label me-3 fw-bold">Role</label>
           <div class="form-check form-check-inline">
             <input class="form-check-input role-radio"
                    type="radio" name="admin" value="true"
@@ -70,7 +76,7 @@
       </form>
 
       <hr>
-
+      <h3 class="fw-bold text-primary">Danh sách user</h3>
       <table class="table table-hover table-bordered align-middle text-center">
         <thead class="table-primary">
         <tr>

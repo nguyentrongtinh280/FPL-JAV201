@@ -7,7 +7,7 @@ import org.hibernate.annotations.Nationalized;
 @Table(name = "Users", schema = "dbo")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    //@GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "Id", nullable = false, length = 36)
     private String id;
 
