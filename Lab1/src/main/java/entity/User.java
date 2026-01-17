@@ -3,6 +3,8 @@ package entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Nationalized;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Users", schema = "dbo")
 public class User {
@@ -25,6 +27,9 @@ public class User {
 
     @Column(name = "Admin", nullable = false)
     private Boolean admin = false;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Favorite> favorites;
 
     public String getId() {
         return id;

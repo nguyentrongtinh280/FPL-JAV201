@@ -6,7 +6,6 @@
     <persistence-unit name="FPL">
         <class>entity.User</class>
         <properties>
-
             <property name="jakarta.persistence.jdbc.driver"
                       value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="jakarta.persistence.jdbc.url"
@@ -16,6 +15,7 @@
             <property name="jakarta.persistence.jdbc.password"
                       value="123"/>
 
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
             <property name="hibernate.dialect"
                       value="org.hibernate.dialect.SQLServerDialect"/>
             <property name="hibernate.hbm2ddl.auto"

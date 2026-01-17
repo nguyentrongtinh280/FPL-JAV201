@@ -19,6 +19,7 @@
     <div class="card-body">
       <h2 class="fw-bold text-primary text-center">Thông tin người dùng</h2>
       <form action="${url}" method="post" id="userForm" novalidate>
+
         <div class="mb-3">
           <label class="form-label fw-bold">Id</label>
           <input type="text" name="id"
