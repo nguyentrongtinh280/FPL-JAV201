@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos">
-                        <i class="fa-solid fa-video"></i>Video yêu thích
+                        <i class="fa-solid fa-video"></i> Video yêu thích
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,11 +53,48 @@
         </div>
     </div>
 </nav>
-
 <main class="container my-4 flex-fill">
-    <h1 class="text-center text-primary fw-bold mt-5">Chào mừng đến với trang chủ</h1>
-</main>
+    <div class="container mt-4">
 
+        <c:if test="${empty videos}">
+            <div class="alert alert-warning">
+                Bạn chưa yêu thích video nào.
+            </div>
+        </c:if>
+
+        <div class="row">
+            <c:forEach var="v" items="${videos}">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+
+                        <img src="${v.poster}"
+                             class="card-img-top"
+                             style="height:200px; object-fit:cover">
+
+                        <div class="card-body">
+                            <h5 class="card-title">${v.title}</h5>
+
+                            <p class="card-text text-muted"
+                               style="height:60px; overflow:hidden">
+                                    ${v.description}
+                            </p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    👁 ${v.views} lượt xem
+                                </small>
+
+                                <c:if test="${v.active}">
+                                    <span class="badge bg-success">Active</span>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</main>
 <footer class="bg-dark text-white text-center p-3 mt-5">
     <p class="text-center mb-0">JAV201 - Lập trình web nâng cao</p>
 </footer>

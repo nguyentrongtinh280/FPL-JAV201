@@ -30,6 +30,9 @@ public class Favorite {
         this.user = user;
     }
 
+    public Favorite() {
+    }
+
     public Video getVideo() {
         return video;
     }

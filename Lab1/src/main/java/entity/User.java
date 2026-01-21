@@ -28,7 +28,7 @@ public class User {
     @Column(name = "Admin", nullable = false)
     private Boolean admin = false;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<Favorite> favorites;
 
     public String getId() {
@@ -71,6 +71,13 @@ public class User {
         this.admin = admin;
     }
 
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
+    }
 
     @Override
     public String toString() {

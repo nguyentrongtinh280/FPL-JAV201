@@ -42,6 +42,10 @@ public class Video {
         this.favorites = favorites;
     }
 
+    public Video() {
+    }
+
+
     public String getPoster() {
         return poster;
     }

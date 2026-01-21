@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos">
-                        <i class="fa-solid fa-video"></i>Video yêu thích
+                        <i class="fa-solid fa-video"></i> Video yêu thích
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,11 +53,30 @@
         </div>
     </div>
 </nav>
-
 <main class="container my-4 flex-fill">
-    <h1 class="text-center text-primary fw-bold mt-5">Chào mừng đến với trang chủ</h1>
-</main>
+    <div class="container mt-4">
+        <h1 class="mb-5 text-danger fw-bold text-center">Danh sách video yêu thích</h1>
+        <table class="table table-bordered table-hover text-center align-middle">
+            <thead class="table-primary">
+                <tr>
+                    <th>Video yêu thích</th>
+                    <th>Người thích</th>
+                    <th>Ngày thích</th>
+                </tr>
+            </thead>
 
+            <tbody>
+                <c:forEach var="f" items="${favorites}">
+                    <tr>
+                        <td>${f.video.title}</td>
+                        <td>${f.user.fullname}</td>
+                        <td>${f.likeDate}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</main>
 <footer class="bg-dark text-white text-center p-3 mt-5">
     <p class="text-center mb-0">JAV201 - Lập trình web nâng cao</p>
 </footer>

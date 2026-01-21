@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Favorite;
+import entity.Video;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import utils.XJPA;
@@ -72,7 +73,7 @@ public class FavoriteDAOImpl implements FavoriteDAO {
     public List<Favorite> findByUser(String userId) {
         EntityManager em = XJPA.getEntityManager();
         try {
-            String jpql = "SELECT f From Favorite f WHERE f.user = :uid";
+            String jpql = "SELECT f From Favorite f WHERE f.user.id = :uid";
             TypedQuery<Favorite> query = em.createQuery(jpql, Favorite.class);
             query.setParameter("uid", userId);
             return query.getResultList();
@@ -95,4 +96,16 @@ public class FavoriteDAOImpl implements FavoriteDAO {
         }
     }
 
+    @Override
+    public List<Video> findFavoriteVideosByUser(String userId) {
+        EntityManager em = XJPA.getEntityManager();
+        try {
+            String jpql = "SELECT f.video FROM Favorite f WHERE f.user.id = :userId";
+            TypedQuery<Video> query = em.createQuery(jpql, Video.class);
+            query.setParameter("userId", userId);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

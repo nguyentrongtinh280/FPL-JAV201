@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Favorite;
+import entity.Video;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface FavoriteDAO {
     List<Favorite> findByUser(String userId);
 
     List<Favorite> findByVideo(String videoId);
+    List<Video> findFavoriteVideosByUser(String userId);
 }
