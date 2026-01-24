@@ -11,5 +11,8 @@ public interface UserDAO {
     void deleteUser(String userId);
     List<User> getAllUsers();
     User getUserById(String userId);
+    User getUserByEmail(String email);
+
+    User Login(String emailOrUsername, String password);
 
 }

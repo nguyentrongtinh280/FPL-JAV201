@@ -4,7 +4,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách video yêu thích</title>
+    <title>Thông tin chia sẻ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
     <link rel="stylesheet"
@@ -49,39 +49,53 @@
                         <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/timkiem">
                         <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/thong-tin-chia-se-video">
+                        <i class="fa-solid fa-bookmark"></i> Thông tin chia sẻ
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
 <main class="container my-4 flex-fill">
+
     <div class="container mt-4">
-        <h1 class="mb-5 text-danger fw-bold text-center">Danh sách video yêu thích</h1>
-        <table class="table table-bordered table-hover text-center align-middle">
-            <thead class="table-primary">
+        <table class="table table-hover table-bordered text-center">
+            <thead>
                 <tr>
-                    <th>Video yêu thích</th>
-                    <th>Người thích</th>
-                    <th>Ngày thích</th>
+                    <th>Tiêu đề video</th>
+                    <th>Số lượt chia sẻ</th>
+                    <th>Ngày chia sẻ đầu tiên</th>
+                    <th>Ngày chia sẻ cuối cùng</th>
                 </tr>
             </thead>
-
             <tbody>
-                <c:forEach var="f" items="${favorites}">
+                <c:forEach items="${videos}" var="v">
                     <tr>
-                        <td>${f.video.title}</td>
-                        <td>${f.user.fullname}</td>
-                        <td>${f.likeDate}</td>
+                        <td>${v.title}</td>
+                        <td>${v.views}</td>
+                        <td>
+                            <c:if test="${v.active}">
+                                <span class="badge bg-success">Active</span>
+                            </c:if>
+                        </td>
                     </tr>
                 </c:forEach>
+
             </tbody>
         </table>
     </div>
 </main>
+
 <footer class="bg-dark text-white text-center p-3 mt-5">
     <p class="text-center mb-0">JAV201 - Lập trình web nâng cao</p>
 </footer>

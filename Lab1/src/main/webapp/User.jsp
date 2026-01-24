@@ -48,6 +48,12 @@
             <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/timkiem">
+            <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+          </a>
+        </li>
       </ul>
     </div>
   </div>

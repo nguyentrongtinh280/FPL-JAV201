@@ -12,4 +12,8 @@ public interface VideoDAO {
     Video getVideoById(String videoId);
 
     List<Video> findActiveVideos();
+    List<Video> findByTitle(String title);
+
+    List<Object[]> findTop100MostFavoriteVideos();
+    List<Video> findVideosWithNoFavorite();
 }

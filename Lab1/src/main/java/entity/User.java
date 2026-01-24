@@ -28,6 +28,9 @@ public class User {
     @Column(name = "Admin", nullable = false)
     private Boolean admin = false;
 
+    @Column(name = "Username", nullable = false, length = 50)
+    private String username;
+
     @OneToMany(mappedBy = "user")
     private List<Favorite> favorites;
 

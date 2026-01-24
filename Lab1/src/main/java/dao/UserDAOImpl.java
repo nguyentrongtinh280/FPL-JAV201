@@ -78,4 +78,32 @@ public class UserDAOImpl implements UserDAO {
             em.close();
         }
     }
+
+    public User getUserByEmail(String email) {
+        EntityManager em = XJPA.getEntityManager();
+        try {
+            String jpql = "SELECT u FROM User u WHERE u.email = :email";
+
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
+            query.setParameter("email", email);
+            return query.getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    public User Login(String emailOrUsername, String password) {
+        EntityManager em = XJPA.getEntityManager();
+        try {
+            String jpql = "SELECT u FROM User u WHERE (u.email = :emailOrUsername OR u.username = :emailOrUsername) AND u.password = :password";
+            TypedQuery<User> query = em.createQuery(jpql, User.class);
+            query.setParameter("emailOrUsername", emailOrUsername);
+            query.setParameter("password", password);
+            return query.getSingleResult();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            em.close();
+        }
+    }
 }

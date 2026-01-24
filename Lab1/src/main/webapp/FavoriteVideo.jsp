@@ -4,7 +4,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trang chủ</title>
+    <title>Video yêu thích</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
     <link rel="stylesheet"
@@ -14,7 +14,7 @@
           referrerpolicy="no-referrer"
     />
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light">
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/home">
@@ -49,13 +49,35 @@
                         <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/timkiem">
+                        <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 <main class="container my-4 flex-fill">
-    <div class="container mt-4">
+    <form class="row g-2 mb-4"
+          action="${pageContext.request.contextPath}/favorite-videos"
+          method="get">
+        <label class="label-control fw-bold">Tìm kiếm</label>
+        <div class="col-md-4">
 
+            <input type="text"
+                   name="userId" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fa-solid fa-magnifying-glass"></i> Tìm
+            </button>
+        </div>
+    </form>
+
+    <div class="container mt-4">
         <c:if test="${empty videos}">
             <div class="alert alert-warning">
                 Bạn chưa yêu thích video nào.
@@ -67,7 +89,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
 
-                        <img src="${v.poster}"
+                        <img src="images/${v.poster}"
                              class="card-img-top"
                              style="height:200px; object-fit:cover">
 

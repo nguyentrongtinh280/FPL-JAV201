@@ -11,13 +11,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/favorite-videos")
+@WebServlet({"/favorite-videos", "/favorite-videos/search"})
 public class FavoriteVideoServlet extends HttpServlet {
     FavoriteDAOImpl favoriteDAO = new FavoriteDAOImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Video> videos = favoriteDAO.findFavoriteVideosByUser("U001");
+
+        String userId = req.getParameter("userId");
+
+        List<Video> videos = favoriteDAO.findFavoriteVideosByUser(userId);
         req.setAttribute("videos", videos);
-        req.getRequestDispatcher("FavoriteVideo.jsp").forward(req, resp);
+        req.getRequestDispatcher("/FavoriteVideo.jsp").forward(req, resp);
     }
 }

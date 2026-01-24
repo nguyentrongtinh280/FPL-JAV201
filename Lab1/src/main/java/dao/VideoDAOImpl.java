@@ -90,4 +90,40 @@ public class VideoDAOImpl implements VideoDAO{
             em.close();
         }
     }
+
+    @Override
+    public List<Video> findByTitle(String title) {
+        EntityManager em = XJPA.getEntityManager();
+        try {
+            String jpql = "SELECT v FROM Video v WHERE v.title LIKE :title";
+            TypedQuery<Video> query = em.createQuery(jpql, entity.Video.class);
+            query.setParameter("title", "%" + title + "%");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Object[]> findTop100MostFavoriteVideos() {
+        EntityManager em = XJPA.getEntityManager();
+        try {
+            String jpql = "SELECT v, COUNT(f) FROM Favorite f JOIN f.video v GROUP BY v ORDER BY COUNT(f) DESC";
+            TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+            query.setMaxResults(10);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Video> findVideosWithNoFavorite() {
+        EntityManager em = XJPA.getEntityManager();
+        try {
+            String jpql = "SELECT v FROM Video v WHERE v.id NOT IN (SELECT DISTINCT f.video.id FROM Favorite f)";
+            TypedQuery<Video> query = em.createQuery(jpql, Video.class);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

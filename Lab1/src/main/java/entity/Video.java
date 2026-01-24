@@ -1,6 +1,7 @@
 package entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Nationalized;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Video {
     @Column(name = "Id", nullable = false, length = 36)
     private String id;
 
+    @Nationalized
     @Column(name = "Title", nullable = false, length = 255)
     private String title;
 
@@ -21,6 +23,7 @@ public class Video {
     @Column(name = "Views", nullable = false)
     private int views;
 
+    @Nationalized
     @Lob
     @Column(name = "Description")
     private String description;
