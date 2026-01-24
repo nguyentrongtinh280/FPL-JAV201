@@ -1,5 +1,6 @@
 package dao;
 
+import dto.VideoFavoriteInfo;
 import entity.Video;
 
 import java.util.List;
@@ -14,6 +15,6 @@ public interface VideoDAO {
     List<Video> findActiveVideos();
     List<Video> findByTitle(String title);
 
-    List<Object[]> findTop100MostFavoriteVideos();
+    List<VideoFavoriteInfo> findTop10MostFavoriteVideos();
     List<Video> findVideosWithNoFavorite();
 }

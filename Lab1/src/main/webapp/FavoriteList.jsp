@@ -39,16 +39,6 @@
                         <i class="fa-solid fa-user"></i> Người dùng
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos">
-                        <i class="fa-solid fa-video"></i>Video yêu thích
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos-list">
-                        <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
-                    </a>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link text-white" href="${pageContext.request.contextPath}/video-search">
@@ -60,6 +50,28 @@
                     <a class="nav-link text-white" href="${pageContext.request.contextPath}/thong-tin-chia-se-video">
                         <i class="fa-solid fa-bookmark"></i> Thông tin chia sẻ
                     </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#"
+                       role="button" data-bs-toggle="dropdown">
+                        <i class="fa-solid fa-video"></i> Quản lý video
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item"
+                               href="${pageContext.request.contextPath}/favorite-videos"><i class="fa-solid fa-video"></i>Video yêu thích</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="${pageContext.request.contextPath}/favorite-videos-list"><i class="fa-solid fa-video"></i>Danh sách video yêu thích</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="${pageContext.request.contextPath}/top-10-video"><i class="fa-solid fa-video"></i>Danh sách top 10 video yêu thích nhất</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 
@@ -73,6 +85,7 @@
         </div>
     </div>
 </nav>
+
 <main class="container my-4 flex-fill">
     <div class="container mt-4">
         <h3 class="mb-4 text-danger fw-bold text-center">Danh sách video yêu thích</h3>

@@ -1,5 +1,6 @@
 package dao;
 
+import dto.VideoFavoriteInfo;
 import entity.Video;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -104,11 +105,21 @@ public class VideoDAOImpl implements VideoDAO{
         }
     }
 
-    public List<Object[]> findTop100MostFavoriteVideos() {
+    public List<VideoFavoriteInfo> findTop10MostFavoriteVideos() {
         EntityManager em = XJPA.getEntityManager();
         try {
-            String jpql = "SELECT v, COUNT(f) FROM Favorite f JOIN f.video v GROUP BY v ORDER BY COUNT(f) DESC";
-            TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+            //String jpql = "SELECT v, COUNT(f) FROM Favorite f JOIN f.video v GROUP BY v ORDER BY COUNT(f) DESC";
+
+            String jpql = """
+                SELECT new dto.VideoFavoriteInfo(
+                    f.video.title,
+                    COUNT(f)
+                )
+                FROM Favorite f
+                GROUP BY f.video.title
+                ORDER BY COUNT(f) DESC
+            """;
+            TypedQuery<VideoFavoriteInfo> query = em.createQuery(jpql, VideoFavoriteInfo.class);
             query.setMaxResults(10);
             return query.getResultList();
         } finally {
