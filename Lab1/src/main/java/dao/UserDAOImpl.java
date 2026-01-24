@@ -99,10 +99,9 @@ public class UserDAOImpl implements UserDAO {
             TypedQuery<User> query = em.createQuery(jpql, User.class);
             query.setParameter("emailOrUsername", emailOrUsername);
             query.setParameter("password", password);
-            return query.getSingleResult();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } finally {
+            List<User> list = query.getResultList();
+            return list.isEmpty() ? null : list.get(0);
+        }  finally {
             em.close();
         }
     }

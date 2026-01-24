@@ -34,7 +34,7 @@ public class LoginFilter implements Filter {
         }
 
         HttpSession session = req.getSession(false);
-        Object user = (session != null) ? session.getAttribute("user") : null;
+        Object user = (session != null) ? session.getAttribute("currentUser") : null;
 
         if (user == null) {
             resp.sendRedirect(req.getContextPath() + "/login");

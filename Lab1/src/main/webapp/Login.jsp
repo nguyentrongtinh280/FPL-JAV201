@@ -17,16 +17,15 @@
         <div class="col-md-4">
             <div class="card shadow">
                 <div class="card-body">
-                    <h3 class="text-center mb-4">Đăng nhập</h3>
+                    <h3 class="text-center mb-4 fw-bold text-primary">Đăng nhập</h3>
 
                     <form action="login" method="post" class="was-validated">
 
                         <div class="mb-3">
-                            <label class="form-label">Username</label>
+                            <label class="form-label fw-bold">Tên đăng nhập hoặc email</label>
                             <input type="text"
                                    name="usernameOrEmail"
                                    class="form-control"
-                                   placeholder="Nhập username"
                                    required>
 
                             <div class="valid-feedback">Hợp lệ</div>
@@ -34,11 +33,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Mật khẩu</label>
+                            <label class="form-label fw-bold">Mật khẩu</label>
                             <input type="password"
                                    name="password"
                                    class="form-control"
-                                   placeholder="Nhập mật khẩu"
                                    required>
                             <div class="valid-feedback">Hợp lệ</div>
                             <div class="invalid-feedback">Vui lòng nhập mật khẩu!</div>
@@ -62,5 +60,43 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<%
+    String loginError = (String) request.getAttribute("loginError");
+%>
+
+<% if (loginError != null) { %>
+<!-- Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Lỗi đăng nhập
+                </h5>
+                <button type="button" class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <br>
+                <h5 class="fw-bold text-danger"><%= loginError %></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Thử lại
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const errorModal = new bootstrap.Modal(
+        document.getElementById('errorModal')
+    );
+    errorModal.show();
+</script>
+<% } %>
+
 </body>
 </html>

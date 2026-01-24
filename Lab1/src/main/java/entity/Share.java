@@ -36,6 +36,9 @@ public class Share {
         this.shareDate = shareDate;
     }
 
+    public Share() {
+    }
+
     public Video getVideo() {
         return video;
     }

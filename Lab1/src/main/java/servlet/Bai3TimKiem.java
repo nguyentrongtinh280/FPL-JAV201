@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/timkiem")
+@WebServlet("/video-search")
 public class Bai3TimKiem extends HttpServlet {
     private VideoDAO videoDAO = new VideoDAOImpl();
 

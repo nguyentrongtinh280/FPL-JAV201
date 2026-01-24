@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -18,7 +19,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/home">
-            <img src="images/logofpt.png" alt="Logo FPT" style="width: 160px">
+            <img src="${pageContext.request.contextPath}/images/logofpt.png" alt="Logo FPT" style="width: 160px">
         </a>
 
         <button class="navbar-toggler" type="button"
@@ -30,35 +31,43 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/home">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/home">
                         <i class="fa-solid fa-house"></i> Trang chủ
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/user">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/user">
                         <i class="fa-solid fa-user"></i> Người dùng
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos">
-                        <i class="fa-solid fa-video"></i> Video yêu thích
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos">
+                        <i class="fa-solid fa-video"></i>Video yêu thích
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos-list">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos-list">
                         <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/timkiem">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/video-search">
                         <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/thong-tin-chia-se-video">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/thong-tin-chia-se-video">
                         <i class="fa-solid fa-bookmark"></i> Thông tin chia sẻ
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="${pageContext.request.contextPath}/logout">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
                     </a>
                 </li>
             </ul>
@@ -70,7 +79,7 @@
 
     <div class="container mt-4">
         <table class="table table-hover table-bordered text-center">
-            <thead>
+            <thead class="table-primary">
                 <tr>
                     <th>Tiêu đề video</th>
                     <th>Số lượt chia sẻ</th>
@@ -79,14 +88,15 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${videos}" var="v">
+                <c:forEach items="${shareInfoList}" var="s">
                     <tr>
-                        <td>${v.title}</td>
-                        <td>${v.views}</td>
+                        <td>${s.title}</td>
+                        <td>${s.shareCount}</td>
                         <td>
-                            <c:if test="${v.active}">
-                                <span class="badge bg-success">Active</span>
-                            </c:if>
+                            <fmt:formatDate value="${s.firstShareDate}" pattern="dd/MM/yyyy"/>
+                        </td>
+                        <td>
+                            <fmt:formatDate value="${s.lastShareDate}" pattern="dd/MM/yyyy"/>
                         </td>
                     </tr>
                 </c:forEach>

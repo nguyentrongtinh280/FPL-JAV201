@@ -27,18 +27,13 @@ public class LoginServlet extends HttpServlet {
         User user = userDAO.Login(usernameOrEmail, password);
         if (user != null) {
             HttpSession session = req.getSession();
-            session.setAttribute("user", user);
+            session.setAttribute("currentUser", user);
             if (rememberMe != null) {
                 Cookie cUser = new Cookie("username", usernameOrEmail);
-                Cookie cPassword = new Cookie("password", password);
                 cUser.setMaxAge(7 * 24 * 60 * 60);
-                cPassword.setMaxAge(7 * 24 * 60 * 60);
 
                 cUser.setPath("/");
-                cPassword.setPath("/");
-
                 resp.addCookie(cUser);
-                resp.addCookie(cPassword);
 
             } else {
                 Cookie cUser = new Cookie("username", "");
@@ -55,6 +50,7 @@ public class LoginServlet extends HttpServlet {
             }
             resp.sendRedirect(req.getContextPath() + "/home");
         } else {
+            req.setAttribute("loginError", "Sai tên đăng nhập hoặc mật khẩu!");
             req.getRequestDispatcher("/Login.jsp").forward(req, resp);
         }
     }

@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/home">
-            <img src="images/logofpt.png" alt="Logo FPT" style="width: 160px">
+            <img src="${pageContext.request.contextPath}/images/logofpt.png" alt="Logo FPT" style="width: 160px">
         </a>
 
         <button class="navbar-toggler" type="button"
@@ -30,28 +30,43 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/home">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/home">
                         <i class="fa-solid fa-house"></i> Trang chủ
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/user">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/user">
                         <i class="fa-solid fa-user"></i> Người dùng
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos">
-                        <i class="fa-solid fa-video"></i> Video yêu thích
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos">
+                        <i class="fa-solid fa-video"></i>Video yêu thích
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos-list">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos-list">
                         <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/timkiem">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/video-search">
                         <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/thong-tin-chia-se-video">
+                        <i class="fa-solid fa-bookmark"></i> Thông tin chia sẻ
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="${pageContext.request.contextPath}/logout">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
                     </a>
                 </li>
             </ul>
@@ -60,7 +75,7 @@
 </nav>
 <main class="container my-4 flex-fill">
     <div class="container mt-4">
-        <h1 class="mb-5 text-danger fw-bold text-center">Danh sách video yêu thích</h1>
+        <h3 class="mb-4 text-danger fw-bold text-center">Danh sách video yêu thích</h3>
         <table class="table table-bordered table-hover text-center align-middle">
             <thead class="table-primary">
                 <tr>
@@ -82,6 +97,7 @@
         </table>
     </div>
 </main>
+
 <footer class="bg-dark text-white text-center p-3 mt-5">
     <p class="text-center mb-0">JAV201 - Lập trình web nâng cao</p>
 </footer>

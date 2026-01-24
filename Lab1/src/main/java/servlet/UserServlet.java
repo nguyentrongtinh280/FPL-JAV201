@@ -36,7 +36,9 @@ public class UserServlet extends HttpServlet {
            }
         }
         if (path.endsWith("/reset")) {
-            req.removeAttribute("user");
+            //req.removeAttribute("user");
+            req.setAttribute("user", new User());
+            req.setAttribute("isEdit", false);
         }
         req.getRequestDispatcher("/User.jsp").forward(req, resp);
     }
@@ -47,6 +49,8 @@ public class UserServlet extends HttpServlet {
         User user = new User();
         try {
             BeanUtils.populate(user, req.getParameterMap());
+            boolean admin = Boolean.parseBoolean((req.getParameter("admin")));
+            user.setAdmin(admin);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

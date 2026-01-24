@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/home">
-      <img src="images/logofpt.png" alt="Logo FPT" style="width: 160px">
+      <img src="${pageContext.request.contextPath}/images/logofpt.png" alt="Logo FPT" style="width: 160px">
     </a>
 
     <button class="navbar-toggler" type="button"
@@ -29,29 +29,43 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/home">
+          <a class="nav-link text-white" href="${pageContext.request.contextPath}/home">
             <i class="fa-solid fa-house"></i> Trang chủ
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/user">
+          <a class="nav-link text-white" href="${pageContext.request.contextPath}/user">
             <i class="fa-solid fa-user"></i> Người dùng
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos">
+          <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos">
             <i class="fa-solid fa-video"></i>Video yêu thích
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/favorite-videos-list">
+          <a class="nav-link text-white" href="${pageContext.request.contextPath}/favorite-videos-list">
             <i class="fa-solid fa-bookmark"></i> Danh sách video yêu thích
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/timkiem">
+          <a class="nav-link text-white" href="${pageContext.request.contextPath}/video-search">
             <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="${pageContext.request.contextPath}/thong-tin-chia-se-video">
+            <i class="fa-solid fa-bookmark"></i> Thông tin chia sẻ
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link text-warning" href="${pageContext.request.contextPath}/logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
           </a>
         </li>
       </ul>
@@ -80,11 +94,19 @@
           </div>
 
           <div class="mb-3">
-            <label class="form-label fw-bold">Fullname</label>
+            <label class="form-label fw-bold">Họ và tên</label>
             <input type="text" name="fullname"
                    class="form-control" value="${user.fullname}" required>
             <div class="valid-feedback">Hợp lệ</div>
             <div class="invalid-feedback">Vui lòng nhập fullname!</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Tên đăng nhập</label>
+            <input type="text" name="username"
+                   class="form-control"
+                   value="${user.username}"
+            ${isEdit ? 'readonly' : 'required'}>
           </div>
 
           <div class="mb-3">
@@ -96,7 +118,7 @@
           </div>
 
           <div class="mb-3">
-            <label class="form-label fw-bold">Password</label>
+            <label class="form-label fw-bold">Mật khẩu</label>
             <input type="password" name="password"
                    class="form-control" value="${user.password}" required>
             <div class="valid-feedback">Hợp lệ</div>
@@ -104,7 +126,7 @@
           </div>
 
           <div class="mb-3">
-            <label class="form-label me-3 fw-bold">Role</label>
+            <label class="form-label me-3 fw-bold">Vai trò</label>
             <div class="form-check form-check-inline">
               <input class="form-check-input role-radio"
                      type="radio" name="admin" value="true"
@@ -122,10 +144,10 @@
           </div>
 
           <div class="mt-3">
-            <button formaction="${url}/create" class="btn btn-success">Create</button>
-            <button formaction="${url}/update" class="btn btn-warning">Update</button>
-            <button formaction="${url}/delete" class="btn btn-danger">Delete</button>
-            <button href="${url}/reset" class="btn btn-secondary">Reset</button>
+            <button formaction="${url}/create" class="btn btn-success">Thêm</button>
+            <button formaction="${url}/update" class="btn btn-warning">Sửa</button>
+            <button formaction="${url}/delete" class="btn btn-danger">Xóa</button>
+            <button formaction="${url}/reset" class="btn btn-secondary">Mới</button>
           </div>
         </form>
 
@@ -135,10 +157,11 @@
           <thead class="table-primary">
           <tr>
             <th>ID</th>
-            <th>Fullname</th>
+            <th>Họ và tên</th>
+            <th>Tên đăng nhập</th>
             <th>Email</th>
-            <th>Role</th>
-            <th>Action</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
           </tr>
           </thead>
 
@@ -147,6 +170,7 @@
             <tr>
               <td>${u.id}</td>
               <td>${u.fullname}</td>
+              <td>${u.username}</td>
               <td>${u.email}</td>
               <td>
                 <span class="badge ${u.admin ? 'bg-danger' : 'bg-primary'}">
@@ -156,7 +180,7 @@
               <td>
                 <a href="${url}/edit?id=${u.id}" class="btn btn-sm btn-info">
                   <i class="bi bi-pencil-square me-1"></i>
-                  Edit
+                  Sửa
                 </a>
               </td>
             </tr>

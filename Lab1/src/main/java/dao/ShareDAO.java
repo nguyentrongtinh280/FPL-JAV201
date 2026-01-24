@@ -1,8 +1,9 @@
 package dao;
 
-import entity.Share;
+import dto.VideoShareInfo;
+
+import java.util.List;
 
 public interface ShareDAO {
-    void createShare(Share share);
-    void updateShare(Share share);
+    List<VideoShareInfo> getVideoShareInfo();
 }
