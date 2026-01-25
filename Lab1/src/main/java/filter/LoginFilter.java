@@ -22,6 +22,7 @@ public class LoginFilter implements Filter {
 
         boolean isLoginPage = uri.endsWith("Login.jsp");
         boolean isLoginServlet = uri.endsWith("/login");
+
         boolean isResource =
                 uri.contains("/css/") ||
                         uri.contains("/js/") ||
