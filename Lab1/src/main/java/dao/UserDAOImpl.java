@@ -101,7 +101,7 @@ public class UserDAOImpl implements UserDAO {
             query.setParameter("password", password);
             List<User> list = query.getResultList();
             return list.isEmpty() ? null : list.get(0);
-        }  finally {
+        }  finally{
             em.close();
         }
     }

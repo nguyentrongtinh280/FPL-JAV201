@@ -12,12 +12,12 @@ import org.apache.commons.beanutils.BeanUtils;
 import java.io.IOException;
 
 @WebServlet({
-        "/user/create",
-        "/user/update",
-        "/user/delete",
-        "/user/edit/*",
-        "/user/reset",
-        "/user"
+        "/admin/user/create",
+        "/admin/user/update",
+        "/admin/user/delete",
+        "/admin/user/edit/*",
+        "/admin/user/reset",
+        "/admin/user"
 })
 public class UserServlet extends HttpServlet {
 
@@ -36,7 +36,6 @@ public class UserServlet extends HttpServlet {
            }
         }
         if (path.endsWith("/reset")) {
-            //req.removeAttribute("user");
             req.setAttribute("user", new User());
             req.setAttribute("isEdit", false);
         }
@@ -63,6 +62,6 @@ public class UserServlet extends HttpServlet {
         } else if (path.endsWith("/delete")) {
             userDAO.deleteUser(user.getId());
         }
-        resp.sendRedirect(req.getContextPath() + "/user");
+        resp.sendRedirect(req.getContextPath() + "/admin/user");
     }
 }

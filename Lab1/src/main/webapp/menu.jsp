@@ -19,11 +19,6 @@
                         <i class="fa-solid fa-house"></i> Trang chủ
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/user">
-                        <i class="fa-solid fa-user"></i> Người dùng
-                    </a>
-                </li>
 
                 <li class="nav-item">
                     <a class="nav-link text-white" href="${pageContext.request.contextPath}/video-search">
@@ -46,16 +41,52 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/favorite-videos"><i class="fa-solid fa-video"></i>Video yêu thích</a>
+                               href="${pageContext.request.contextPath}/favorite-videos">
+                                <i class="fa-solid fa-crown"></i>Video yêu thích
+                            </a>
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/favorite-videos-list"><i class="fa-solid fa-video"></i>Danh sách video yêu thích</a>
+                               href="${pageContext.request.contextPath}/favorite-videos-list">
+                                <i class="fa-solid fa-heart-circle-plus"></i>Danh sách video yêu thích
+                            </a>
                         </li>
 
                         <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/top-10-video"><i class="fa-solid fa-video"></i>Danh sách top 10 video yêu thích nhất</a>
+                               href="${pageContext.request.contextPath}/top-10-video">
+                                <i class="fa-solid fa-laptop-code"></i>Danh sách top 10 video yêu thích nhất
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/admin/user">
+                        <i class="fa-solid fa-user"></i> Quản lý người dùng
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#"
+                       role="button" data-bs-toggle="dropdown">
+                        <i class="fa-regular fa-id-badge"></i> Tài khoản
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item"
+                               href="${pageContext.request.contextPath}/account/change-password">
+                                <i class="fa-solid fa-key"></i>Đổi mật khẩu
+
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="${pageContext.request.contextPath}/account/edit-profile">
+                                <i class="fa-solid fa-user-tie"></i>Thông tin cá nhân
+                            </a>
                         </li>
                     </ul>
                 </li>

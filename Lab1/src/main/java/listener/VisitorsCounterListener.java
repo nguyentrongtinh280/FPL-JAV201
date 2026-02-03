@@ -29,11 +29,9 @@ public class VisitorsCounterListener implements ServletContextListener, HttpSess
             if (counter != null) {
                 visitors = counter.getTotalVisitors();
             }
-
         } finally {
             em.close();
         }
-
         context.setAttribute("visitors", new AtomicLong(visitors));
     }
 
@@ -56,7 +54,6 @@ public class VisitorsCounterListener implements ServletContextListener, HttpSess
 
         try {
             transaction.begin();
-
             VisitorsCounter counter = em.find(VisitorsCounter.class, COUNTER_ID);
 
             if (counter == null) {

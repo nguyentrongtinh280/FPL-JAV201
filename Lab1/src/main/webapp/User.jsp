@@ -18,7 +18,8 @@
 <jsp:include page="menu.jsp"/>
 
 <main class="container my-4 flex-fill">
-  <c:url var="url" value="/user"/>
+  <c:url var="url" value="/admin/user"/>
+
   <div class="container mt-4">
     <div class="card mb-4">
       <div class="card-header fw-bold bg-primary">
