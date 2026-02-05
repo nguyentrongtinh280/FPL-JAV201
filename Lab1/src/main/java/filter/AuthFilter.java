@@ -13,8 +13,6 @@ import java.io.IOException;
         "/admin/*",
         "/account/change-password",
         "/account/edit-profile",
-        "/video/like/*",
-        "/video/share/*"
 })
 public class AuthFilter implements Filter {
 
