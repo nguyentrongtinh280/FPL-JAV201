@@ -19,9 +19,19 @@ public class LoginFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
 
         String uri = req.getRequestURI();
+        String contextPath = req.getContextPath();
 
-        boolean isLoginPage = uri.endsWith("Login.jsp");
-        boolean isLoginServlet = uri.endsWith("/login");
+        boolean isPublicPage =
+                uri.equals(contextPath + "/home") ||
+                        uri.equals(contextPath + "/") ||
+                        uri.endsWith("index.jsp") ||
+                        uri.endsWith("Login.jsp") ||
+                        uri.endsWith("/video-search") ||
+                        uri.endsWith("/thong-tin-chia-se-video") ||
+                        uri.endsWith("/favorite-videos") ||
+                        uri.endsWith("/favorite-videos-list") ||
+                        uri.endsWith("/top-10-video") ||
+                        uri.endsWith("/login");
 
         boolean isResource =
                 uri.contains("/css/") ||
@@ -29,7 +39,7 @@ public class LoginFilter implements Filter {
                         uri.contains("/images/") ||
                         uri.contains("/fonts/");
 
-        if (isLoginPage || isLoginServlet || isResource) {
+        if (isPublicPage || isResource) {
             chain.doFilter(request, response);
             return;
         }

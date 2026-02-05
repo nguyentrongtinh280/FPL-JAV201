@@ -25,6 +25,6 @@ public class LogoutServlet extends HomeServlet {
         cUser.setPath("/");
         resp.addCookie(cUser);
 
-        resp.sendRedirect(req.getContextPath() + "/login");
+        resp.sendRedirect(req.getContextPath() + "/home");
     }
 }

@@ -35,7 +35,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#"
                        role="button" data-bs-toggle="dropdown">
-                        <i class="fa-solid fa-video"></i> Quản lý video
+                        <i class="fa-solid fa-video"></i> Video
                     </a>
 
                     <ul class="dropdown-menu">
@@ -84,7 +84,7 @@
                         </li>
                         <li>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/account/edit-profile">
+                               href="${pageContext.request.contextPath}/account/profile">
                                 <i class="fa-solid fa-user-tie"></i>Thông tin cá nhân
                             </a>
                         </li>
@@ -93,12 +93,23 @@
             </ul>
 
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-warning" href="${pageContext.request.contextPath}/logout">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất
-                    </a>
-                </li>
+                <c:choose>
+                    <c:when test="${empty sessionScope.currentUser}">
+                        <a href="${pageContext.request.contextPath}/login"
+                           class="btn btn-outline-light btn-sm">
+                            <i class="fa fa-sign-in-alt"></i> ĐĂNG NHẬP
+                        </a>
+                    </c:when>
+
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/logout"
+                           class="btn btn-outline-light btn-sm">
+                            <i class="fa fa-sign-out-alt"></i> ĐĂNG XUẤT
+                        </a>
+                    </c:otherwise>
+                </c:choose>
             </ul>
+
         </div>
     </div>
 </nav>
