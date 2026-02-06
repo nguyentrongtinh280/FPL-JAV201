@@ -19,9 +19,9 @@
                 <div class="card-body">
                     <h3 class="text-center mb-4 fw-bold text-primary">Đăng nhập</h3>
 
-                    <form action="login" method="post" class="was-validated">
+                    <form action="login" method="post" class="needs-validation" novalidate>
 
-                        <div class="mb-3">
+                    <div class="mb-3">
                             <label class="form-label fw-bold">Tên đăng nhập hoặc email</label>
                             <input type="text"
                                    name="usernameOrEmail"
@@ -98,6 +98,24 @@
     errorModal.show();
 </script>
 <% } %>
+
+<script>
+    (() => {
+        'use strict';
+
+        const forms = document.querySelectorAll('.needs-validation');
+
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
 
 </body>
 </html>

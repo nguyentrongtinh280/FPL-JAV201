@@ -26,6 +26,7 @@
       <p><strong>Họ và tên:</strong> ${sessionScope.currentUser.fullname}</p>
       <p><strong>Email:</strong> ${sessionScope.currentUser.email}</p>
       <p><strong>Tên đăng nhập:</strong> ${sessionScope.currentUser.username}</p>
+      <p><strong>Vai trò:</strong> ${sessionScope.currentUser.admin ? "Admin" : "User"}</p>
     </c:if>
   </div>
 </main>
