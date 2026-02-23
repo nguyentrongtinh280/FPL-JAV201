@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+
+  <h2>Bài 1: Xây dựng ứng dụng ajax</h2>
+  <button onclick="loadData()">Lấy dữ liệu</button>
+
+  <script>
+    function loadData() {
+      fetch("http://localhost:8080/Lab7/nhanvien")
+              .then(response => response.json())
+              .then(data => {
+                console.log("Mã nhân viên: ", data.manv);
+                console.log("Họ tên: ", data.hoTen);
+                console.log("Giới tính: ", data.gioiTinh);
+                console.log("Lương: ", data.luong);
+              }).catch(error => console.error("Lỗi: ", error));
+    }
+  </script>
+</body>
+</html>
