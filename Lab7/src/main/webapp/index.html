@@ -19,7 +19,7 @@
   <button onclick="uploadFile()" class="btn btn-primary">Upload</button>
 
   <br><br>
-  <h2>Bài 4: Quản lý nhân viên</h2>
+  <h2>Bài 4: Quản lý nhân viên sử dụng Fetch API để tương tác với REST API</h2>
     <div class="card">
         <div class="card-body">
           <div>
@@ -42,7 +42,7 @@
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Salary</th>
-                    <th width="100">Action</th>
+                    <th>Action</th>
                 </tr>
               </thead>
               <tbody id="list"></tbody>
@@ -78,7 +78,6 @@
                 console.log("Tên File: ", data.name);
                 console.log("Loại File: ", data.type);
                 console.log("Kích thước: ", data.size);
-
             })
             .catch(error => console.error("Lỗi: ", error));
     }
@@ -90,11 +89,6 @@
              document.getElementById("id").value = employee.id;
              document.getElementById("name").value = employee.name;
              document.getElementById("salary").value = employee.salary;
-             // if (employee.gender) {
-             //     document.getElementById("male").checked = true;
-             // } else{
-             //     document.getElementById("female").checked = true;
-             // }
             document.getElementById("male").checked = employee.gender === true;
             document.getElementById("female").checked = employee.gender === false;
 
@@ -105,7 +99,7 @@
                 id: document.getElementById("id").value,
                 name: document.getElementById("name").value,
                 gender: document.getElementById("male").checked,
-                salary: parseFloat(document.getElementById("salary").value)
+                salary: Number.parseFloat(document.getElementById("salary").value)
             }
         },
 
@@ -131,8 +125,9 @@
             var url = "http://localhost:8080/Lab7/employee";
             fetch(url, {method: "GET"})
                 .then(resp => resp.json())
-                .then(employees => {this.fillToTable(employees);})
-
+                .then(employees => {
+                    this.fillToTable(employees);
+                })
         },
 
         create() {
