@@ -17,7 +17,7 @@ import java.util.Map;
 public class ChatServerEndPoint {
     private static Map<String, Session> sessions = new HashMap<>();
 
-    private void broadcast(String message) {
+    private void broadcast(Message message) {
         sessions.forEach((username, session) -> {
             try {
                 session.getBasicRemote().sendObject(message);
@@ -35,7 +35,7 @@ public class ChatServerEndPoint {
             session.getUserProperties().put("username", username);
             sessions.put(username, session);
             Message message = new Message("Joined the chat", 0, username, sessions.size());
-            this.broadcast(String.valueOf(message));
+            this.broadcast(message);
         }
     }
 
@@ -49,7 +49,8 @@ public class ChatServerEndPoint {
     }
 
     @OnMessage
-    public void onMessage(String message, Session session) {
+    public void onMessage(Message message, Session session) {
+        message.setCount(sessions.size());
         this.broadcast(message);
     }
 
@@ -58,6 +59,6 @@ public class ChatServerEndPoint {
         String username = (String) session.getUserProperties().get("username");
         sessions.remove(username);
         Message message = new Message("left the chat", 1, username, sessions.size());
-        this.broadcast(String.valueOf(message));
+        this.broadcast(message);
     }
 }

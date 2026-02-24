@@ -23,10 +23,10 @@ function init() {
         alert(resp.reason || 'Goodbye');
         console.log("onclose", resp);
     }
+}
 
-    function send() {
-        var message = document.getElementById("message").value;
-        websocket.send(message);
-        document.getElementById("message").value = "";
-    }
+function send() {
+    var message = document.getElementById("message").value;
+    websocket.send(message);
+    document.getElementById("message").value = "";
 }
